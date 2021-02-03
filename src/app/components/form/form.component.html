@@ -1,0 +1,25 @@
+<select [(ngModel)]="selectedRegion.id" 
+(change)="onSelect($event.target.value)">
+    <option *ngFor="let reg of region" value={{reg.getCode()}}>
+        {{reg.getName()}}
+    </option>
+</select>
+<br>
+<select (change)="filtroProvincia($event.target.value)">
+    <option *ngFor="let provincia of provincias" value={{provincia.getCode()}}>
+        {{provincia.getName()}}
+    </option>
+</select>
+<br>
+<select (change)="obtenerUbigeo($event.target.value)">
+    <option *ngFor="let distrito of distritos" value={{distrito.getCode()}}>
+        {{distrito.getName()}}
+    </option>
+</select>
+<br><br>
+El ubigeo es: {{ubigeo}}
+<!-- <select>
+    <option *ngFor="let city of cities" value="{{city.id}}">
+        {{city.name}}
+    </option>
+</select> -->

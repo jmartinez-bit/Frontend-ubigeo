@@ -120,5 +120,8 @@
       }
     }
   },
-  "defaultProject": "dropDown"
+  "defaultProject": "dropDown",
+  "cli": {
+    "analytics": "0cecb160-5bbb-439b-a3d8-02eec6248241"
+  }
 }

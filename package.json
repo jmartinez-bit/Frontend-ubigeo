@@ -21,6 +21,7 @@
     "@angular/router": "~11.0.9",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
+    "ubigeos": "^2.1.0",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
@@ -41,5 +42,8 @@
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~4.0.2"
+  },
+  "browser": {
+    "crypto": false
   }
 }
