@@ -1,25 +1,54 @@
-<select [(ngModel)]="selectedRegion.id" 
-(change)="onSelect($event.target.value)">
-    <option *ngFor="let reg of region" value={{reg.getCode()}}>
-        {{reg.getName()}}
-    </option>
-</select>
-<br>
-<select (change)="filtroProvincia($event.target.value)">
-    <option *ngFor="let provincia of provincias" value={{provincia.getCode()}}>
-        {{provincia.getName()}}
-    </option>
-</select>
-<br>
-<select (change)="obtenerUbigeo($event.target.value)">
-    <option *ngFor="let distrito of distritos" value={{distrito.getCode()}}>
-        {{distrito.getName()}}
-    </option>
-</select>
-<br><br>
-El ubigeo es: {{ubigeo}}
-<!-- <select>
-    <option *ngFor="let city of cities" value="{{city.id}}">
-        {{city.name}}
-    </option>
-</select> -->
+<div class="container mt-5">
+<form style="width: 500px; margin: 0 auto;">
+    <div class="mb-3">
+        <label for="departamento" class="form-label">Departamento:</label>
+        <select 
+            id="departamento" 
+            (change)="onSelect($event.target.value)"
+            class="form-select"
+            [(ngModel)]="ubigeoNuevo.departamento"
+            name="departamento"
+            aria-label="Default select example">
+            <option selected disabled hidden value="">Selecciona un departamento</option>
+            <option *ngFor="let reg of region" value={{reg.getCode()}}>
+                {{reg.getName()}}
+            </option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="provincia" class="form-label">Provincia:</label>
+        <select 
+            id="provincia" 
+            (change)="filtroProvincia($event.target.value)"
+            class="form-select"
+            [(ngModel)]="ubigeoNuevo.provincia"
+            name="provincia"
+            aria-label="Default select example" [disabled]="provincias==null">
+            <option selected hidden value="">Selecciona una provincia</option>
+            <option *ngFor="let provincia of provincias" value={{provincia.getCode()}}>
+                {{provincia.getName()}}
+            </option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="distritos" class="form-label">Distrito:</label>
+        <select 
+            id="distritos" 
+            (change)="obtenerUbigeo($event.target.value)"
+            class="form-select"
+            [(ngModel)]="ubigeoNuevo.distrito"
+            name="distrito"
+            aria-label="Default select example" [disabled]="distritos==null">
+            <option selected hidden value="">Selecciona un distrito</option>
+            <option *ngFor="let distrito of distritos" value={{distrito.getCode()}}>
+                {{distrito.getName()}}
+            </option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="ubigeo" class="form-label">Ubigeo:</label>
+        <input type="text" [(ngModel)]="ubigeoNuevo.ubigeo" name="ubigeo" class="form-control" placeholder="Ubigeo" value="{{ubigeo}}" readonly>
+    </div>
+    <button class="btn btn-primary" role="button" (click)='create()'>Crear</button>
+  </form>
+</div>
