@@ -33,16 +33,19 @@ export class FormComponent implements OnInit {
   onSelect(id:string):void {
     if(id) {
       this.provincias = Region.instance(id).getProvincies().filter(provincia => provincia != null);
+      this.ubigeoNuevo.provincia = "";
+      this.ubigeoNuevo.distrito = "";
       this.distritos = null;
       this.ubigeo = null;
     }else {
-      this.provincias = [];
+      this.provincias = null;
     }
   }
   
   filtroProvincia(id:string):void {
     if(id) {
       this.distritos = Province.instance(id).getDistricts().filter(distrito => distrito != null);
+      this.ubigeoNuevo.distrito = "";
       this.ubigeo = null;
     }else {
       this.distritos = null;
